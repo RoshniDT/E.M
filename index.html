@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 21st, Ellymae!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #ff0000 0%, #0000ff 50%, #000000 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Birthday banner */
+    .banner {
+      width: 100%;
+      text-align: center;
+      padding: 30px 10px;
+      background: linear-gradient(90deg, #ff0000, #0000ff);
+      color: #ffffff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 20px #0000ff;
+      transform: scale(0);
+      animation: bannerPop 1.2s ease-out forwards;
+    }
+
+    @keyframes bannerPop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* Top extra photo (EM22) */
+    .top-photo {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .top-photo img {
+      width: 220px;
+      height: auto;
+      border-radius: 12px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 0 15px #ff0000, 0 0 15px #0000ff;
+    }
+
+    /* Flip card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+    }
+
+    .card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 140%; /* aspect ratio */
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+      box-shadow:
+        0 0 10px #ff0000,
+        0 0 10px #0000ff,
+        0 0 20px #ff0000,
+        0 0 20px #0000ff;
+    }
+
+    .card-front {
+      background: #000000;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #ff0000, #0000ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* Bottom extra photos (EM23, EM24) */
+    .bottom-photos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+    }
+
+    .bottom-photos img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 0 15px #ff0000, 0 0 15px #0000ff;
+    }
+
+    /* Floating PNGs */
+    .floating {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .pickle1 { animation: float1 18s linear infinite; }
+    .pickle2 { animation: float2 20s linear infinite; }
+    .sard1   { animation: float3 22s linear infinite; }
+    .sard2   { animation: float4 24s linear infinite; }
+    .sard3   { animation: float5 26s linear infinite; }
+    .kiwi1   { animation: float6 20s linear infinite; }
+    .kiwi2   { animation: float7 22s linear infinite; }
+    .kiwi3   { animation: float8 24s linear infinite; }
+
+    @keyframes float1 {
+      0% { transform: translate(-10vw, 10vh) rotate(0deg); }
+      50% { transform: translate(50vw, 60vh) rotate(20deg); }
+      100% { transform: translate(110vw, 20vh) rotate(-10deg); }
+    }
+
+    @keyframes float2 {
+      0% { transform: translate(110vw, 80vh) rotate(0deg); }
+      50% { transform: translate(40vw, 20vh) rotate(-25deg); }
+      100% { transform: translate(-10vw, 70vh) rotate(10deg); }
+    }
+
+    @keyframes float3 {
+      0% { transform: translate(20vw, -10vh) rotate(0deg); }
+      50% { transform: translate(80vw, 50vh) rotate(30deg); }
+      100% { transform: translate(10vw, 110vh) rotate(-15deg); }
+    }
+
+    @keyframes float4 {
+      0% { transform: translate(0vw, 100vh) rotate(0deg); }
+      50% { transform: translate(60vw, 40vh) rotate(15deg); }
+      100% { transform: translate(120vw, 90vh) rotate(-10deg); }
+    }
+
+    @keyframes float5 {
+      0% { transform: translate(100vw, -20vh) rotate(0deg); }
+      50% { transform: translate(30vw, 40vh) rotate(-20deg); }
+      100% { transform: translate(-20vw, 10vh) rotate(10deg); }
+    }
+
+    @keyframes float6 {
+      0% { transform: translate(-15vw, 30vh) rotate(0deg); }
+      50% { transform: translate(40vw, 10vh) rotate(25deg); }
+      100% { transform: translate(120vw, 50vh) rotate(-15deg); }
+    }
+
+    @keyframes float7 {
+      0% { transform: translate(10vw, 110vh) rotate(0deg); }
+      50% { transform: translate(70vw, 60vh) rotate(-25deg); }
+      100% { transform: translate(-10vw, 0vh) rotate(15deg); }
+    }
+
+    @keyframes float8 {
+      0% { transform: translate(90vw, 0vh) rotate(0deg); }
+      50% { transform: translate(30vw, 70vh) rotate(20deg); }
+      100% { transform: translate(-20vw, 100vh) rotate(-10deg); }
+    }
+
+    /* Sparkles overlay */
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.6) 0, transparent 60%),
+        radial-gradient(circle, rgba(255,0,0,0.6) 0, transparent 60%),
+        radial-gradient(circle, rgba(0,0,255,0.6) 0, transparent 60%);
+      background-size: 4px 4px, 3px 3px, 3px 3px;
+      mix-blend-mode: screen;
+      opacity: 0.45;
+      animation: sparkleMove 12s linear infinite;
+    }
+
+    @keyframes sparkleMove {
+      0% { background-position: 0 0, 20px 40px, 40px 80px; }
+      100% { background-position: 200px 200px, 240px 160px, 160px 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating PNGs (use your actual filenames from the folder) -->
+  <img class="floating pickle1" src="pickle1.png" alt="Floating pickle 1">
+  <img class="floating pickle2" src="pickle2.png" alt="Floating pickle 2">
+
+  <img class="floating sard1" src="sard1.png" alt="Floating sardine 1">
+  <img class="floating sard2" src="sard2.png" alt="Floating sardine 2">
+  <img class="floating sard3" src="sard3.png" alt="Floating sardine 3">
+
+  <img class="floating kiwi1" src="kiwi1.png" alt="Floating kiwi 1">
+  <img class="floating kiwi2" src="kiwi2.png" alt="Floating kiwi 2">
+  <img class="floating kiwi3" src="kiwi3.png" alt="Floating kiwi 3">
+
+  <div class="sparkles"></div>
+
+  <!-- Banner -->
+  <div class="banner">
+    HAPPY BIRTHDAY ELLYMAE
+  </div>
+
+  <!-- Top extra photo (EM22) -->
+  <div class="top-photo">
+    <img src="EM22.jpeg" alt="Ellymae photo 22">
+  </div>
+
+  <!-- Flip card grid: EM1–EM21 -->
+  <div class="card-grid">
+
+    <!-- 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM1.jpeg" alt="Ellymae photo 1">
+        </div>
+        <div class="card-back card-face">
+          <p>To my awesome white choco friend Ellymae, happy 21st rockstar</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM2.jpeg" alt="Ellymae photo 2">
+        </div>
+        <div class="card-back card-face">
+          <p>Thank you for being in my life and gracing it with such amazingness, bless your goddamn soul</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM3.jpeg" alt="Ellymae photo 3">
+        </div>
+        <div class="card-back card-face">
+          <p>I truly don't know what I would do without you - I feel blessed to have a friend like you</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM4.jpeg" alt="Ellymae photo 4">
+        </div>
+        <div class="card-back card-face">
+          <p>Your talent amazes me in ways I have not been amazed by other musical beings, you inspire the heck out of me and I can only hope to be as half as good of a musician you are someday</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM5.jpeg" alt="Ellymae photo 5">
+        </div>
+        <div class="card-back card-face">
+          <p>you have helped me in ways I didn't ask for and that means the world to me - just you existing in the same bubble has made me forget I am mentally going thru it muah</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM6.jpeg" alt="Ellymae photo 6">
+        </div>
+        <div class="card-back card-face">
+          <p>YOU ARE BLODDY HILLIRIOUS - bro you can make a room laugh without even meaning to</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM7.jpeg" alt="Ellymae photo 7">
+        </div>
+        <div class="card-back card-face">
+          <p>67676767 this is the 7th photo which is after 6 so 67 anyways (everytime I see 67 I think of you and think how funny it would be if you were there to witness it with me because I know you love that shit)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM8.jpeg" alt="Ellymae photo 8">
+        </div>
+        <div class="card-back card-face">
+          <p>I cannot wait for my future kids to meet Auntie EM - one of my biggest dreams come true is for my future kids to know you and also have you in their life</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM9.jpeg" alt="Ellymae photo 9">
+        </div>
+        <div class="card-back card-face">
+          <p>forever your biggest fan though I am aware there may be others who have that spot but the more the merrier right?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM10.jpeg" alt="Ellymae photo 10">
+        </div>
+        <div class="card-back card-face">
+          <p>I love that you're apart of my family, I love that you are so loved by mum and dad p.s mum also has an edible gift for you hehe</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM11.jpeg" alt="Ellymae photo 11">
+        </div>
+        <div class="card-back card-face">
+          <p>there is no other person in this universe that can love red + blue as much as you and that is the best thing ever to witness, so happy to be alive to witness that honestly</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM12.jpeg" alt="Ellymae photo 12">
+        </div>
+        <div class="card-back card-face">
+          <p>YOUR HUGS BRO you give the best hugs makes me feel so safe and it makes my day, sometimes if i'm haivng a bad day I think to myself that I will be able to see you soon and your hug will make it better</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM13.jpeg" alt="Ellymae photo 13">
+        </div>
+        <div class="card-back card-face">
+          <p>this is actually more of a question can we please jam sometime I wanna jam with you #musicjambuds</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM14.jpeg" alt="Ellymae photo 14">
+        </div>
+        <div class="card-back card-face">
+          <p>the first day we met I knew that this was the start of an awesome friendship and I am so glad it blossomed into a friendship I now never could imagine not having</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM15.jpeg" alt="Ellymae photo 15">
+        </div>
+        <div class="card-back card-face">
+          <p>because of you I have met so many wonderful people who are bloddy lit and so cool and I love them all so much</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM16.jpeg" alt="Ellymae photo 16">
+        </div>
+        <div class="card-back card-face">
+          <p>thank you for always blessing my feed - truly makes my entire day everytime I see ellymaescollection post up or ellymaelawson</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM17.jpeg" alt="Ellymae photo 17">
+        </div>
+        <div class="card-back card-face">
+          <p>if it weren't for you I would not be as confident in my music as I am now - watching you perform, create and do all things music gave me the hope and confidence to do my music thing too you really are a big part of the reason I am now slowly but surely growing in my music life</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM18.jpeg" alt="Ellymae photo 18">
+        </div>
+        <div class="card-back card-face">
+          <p>you are so hard working and never give up even when it gets really tough why is that? becuase you so tuff my friend in seriousness though I am so proud of you for everything you have achieved I know life hasn't been easy swimming for ya at times but you never go down and you push thru and that's some rockstar shit because you are a rockstar #attagirl so keep being the rockstar you are my dearest EM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM19.jpeg" alt="Ellymae photo 19">
+        </div>
+        <div class="card-back card-face">
+          <p>I love sharing your music at work - to be honest any chance I can get I will brag about you and your music to people, sharing your music to my colleagues is a joy I like to thrive in</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM20.jpeg" alt="Ellymae photo 20">
+        </div>
+        <div class="card-back card-face">
+          <p>You’ve made my life brighter just by being in it — thank you for being you, Ellymae 💙❤️</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front card-face">
+          <img src="EM21.jpeg" alt="Ellymae photo 21">
+        </div>
+        <div class="card-back card-face">
+          <p>last one to flip - lastly I just want to say Ellymae you are 21 welcome to the 21 club I cannot wait to see you thrive in life more and cheer you on forever I LOVE YOU my dearest Ellymae - sincerely R xx ❤️🩵 ❤️🩵 ❤️🩵 ❤️🩵 ❤️🩵</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom extra photos (EM23, EM24) -->
+  <div class="bottom-photos">
+    <img src="EM23.jpeg" alt="Ellymae photo 23">
+    <img src="EM24.jpeg" alt="Ellymae photo 24">
+  </div>
+
+  <!-- Confetti scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function launchConfetti() {
+      const duration = 3000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#ff0000', '#0000ff']
+        });
+
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#ff0000', '#0000ff']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    window.onload = launchConfetti;
+  </script>
+
+</body>
+</html>
